@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jossweather/custom_widget/location_card.dart';
 import 'package:jossweather/custom_widget/search_bar.dart';
 class App extends StatelessWidget{
   @override
@@ -14,7 +15,9 @@ class App extends StatelessWidget{
       child: Center(
         child: Column(
           children: [
-            SearchBar(mdh: mdh,mdw: mdw,)
+            SearchBar(mdh: mdh,mdw: mdw,),
+            SizedBox(height: mdh*0.02,),
+            LocationCard(mdw: mdw, mdh: mdh)
           ],
         ),
       ),
