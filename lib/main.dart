@@ -1,22 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:jossweather/provider/weather_provider.dart';
 import 'package:jossweather/screen/app.dart';
-import 'package:provider/provider.dart';
 void main()
 {
+  Get.put(WeatherProvider());
   runApp(Main());
 }
 class Main extends StatelessWidget
 {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => WeatherProvider(),)],
-      child: CupertinoApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {'/':(context)=>App()},
-      ),
+    return GetCupertinoApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {'/':(context)=>App()},
     );
   }
 }
