@@ -5,7 +5,6 @@ class LocationCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: CupertinoColors.systemYellow,
       height: mdh*0.18,
       width: mdw*0.9,
       child: Column(
@@ -13,13 +12,15 @@ class LocationCard extends StatelessWidget{
           Text("TORONTO",style: TextStyle(
             fontSize: mdw*0.12,
             overflow: TextOverflow.ellipsis
+              ,color: CupertinoColors.white
           ),),
           SizedBox(height: mdh*0.002,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(CupertinoIcons.location_solid,color: CupertinoColors.black,),
-              Text("65.32180812267433, 178.9062129595015",overflow: TextOverflow.ellipsis,)
+              Icon(CupertinoIcons.location_solid,color: CupertinoColors.white,),
+              SizedBox(width: mdw*0.01,),
+              Text("65.32180812267433, 178.9062129595015",overflow: TextOverflow.ellipsis,style: TextStyle(color: CupertinoColors.white),)
             ],
           )
         ],
