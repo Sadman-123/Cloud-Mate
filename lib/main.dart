@@ -13,8 +13,9 @@ class Main extends StatelessWidget
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (context) => WeatherProvider(),)],
       child: CupertinoApp(
-        initialRoute: '/home',
-        routes: {'/home':(context)=>App()},
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {'/':(context)=>App()},
       ),
     );
   }
