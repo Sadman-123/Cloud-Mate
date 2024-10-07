@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:jossweather/provider/weather_provider.dart';
+import 'package:get/get.dart';
 class SearchBar extends StatelessWidget{
+
   final double mdw,mdh;
-  const SearchBar({super.key, required this.mdw, required this.mdh});
+   SearchBar({super.key, required this.mdw, required this.mdh});
+   WeatherProvider weather=Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,6 +14,7 @@ class SearchBar extends StatelessWidget{
         top: 25
       ),
       child: CupertinoTextField(
+        controller: weather.ctr,
         placeholder: "Enter City",
         placeholderStyle: TextStyle(
           color: CupertinoColors.secondaryLabel

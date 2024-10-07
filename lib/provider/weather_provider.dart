@@ -10,17 +10,18 @@ class WeatherProvider extends GetxController {
   RxDouble temp = 0.0.obs;
   RxDouble feels_like = 0.0.obs;
   RxString weather_status = "".obs;
+  TextEditingController ctr=TextEditingController();
   Rx<Color> co = CupertinoColors.systemTeal.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    getDatas();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   getDatas();
+  // }
 
   Future<void> getDatas() async {
     var url = Uri.parse(
-        "https://api.weatherapi.com/v1/current.json?key=5dd7454dfb714e629dd23458240710&q=kerala&aqi=no");
+        "https://api.weatherapi.com/v1/current.json?key=5dd7454dfb714e629dd23458240710&q=${ctr.text}&aqi=no");
     var res = await http.get(url);
 
     if (res.statusCode == 200) {
@@ -76,5 +77,6 @@ class WeatherProvider extends GetxController {
           co.value = CupertinoColors.systemTeal;
           break;
       }
+      ctr.clear();
     }
 }}
