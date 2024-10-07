@@ -4,27 +4,20 @@ import 'package:jossweather/custom_widget/temperature_and_icon.dart';
 import 'package:jossweather/provider/weather_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../style/style.dart';
 class App extends StatelessWidget {
   WeatherProvider weather = Get.find();
-
   @override
   Widget build(BuildContext context) {
     var mdh = MediaQuery.sizeOf(context).height;
     var mdw = MediaQuery.sizeOf(context).width;
-
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         backgroundColor: Colors.blueAccent.shade700,
       ),
       child: Container(
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blueAccent.shade700, Colors.blue.shade300],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        decoration: Linear_BG_Decoration(),
         child: SingleChildScrollView(
           child: SafeArea(
             child: Center(
@@ -36,16 +29,9 @@ class App extends StatelessWidget {
                     child: CupertinoTextField(
                       controller: weather.ctr,
                       placeholder: "Enter City",
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        color: CupertinoColors.white
-                      ),
-                      placeholderStyle: TextStyle(
-                          color: CupertinoColors.secondaryLabel),
-                      prefix: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(CupertinoIcons.search),
-                      ),
+                      decoration: Input_decor(),
+                      placeholderStyle: Input_TextHolder(),
+                      prefix: Prefix_Icon(),
                       padding: EdgeInsets.all(18),
                     ),
                   ),
@@ -75,8 +61,8 @@ class App extends StatelessWidget {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Text("${weather.wind} km/h",style: TextStyle(fontSize: mdw*0.07,fontWeight: FontWeight.bold,color: CupertinoColors.white,fontFamily: "apple"),),
-                                        Text("Wind Speed",style: TextStyle(fontSize: mdw*0.04,color: CupertinoColors.white,fontFamily: "apple"),)
+                                        Text("${weather.wind} km/h",style: Card_Title(mdw),),
+                                        Text("Wind Speed",style: Card_SubTitle(mdw),)
                                       ],
                                     ),
                                   ),

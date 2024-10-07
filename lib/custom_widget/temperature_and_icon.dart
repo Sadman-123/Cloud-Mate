@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:jossweather/provider/weather_provider.dart';
 import 'package:get/get.dart';
+import 'package:jossweather/style/style.dart';
 class TemperatureAndIcon extends StatelessWidget{
   final double mdw,mdh;
    TemperatureAndIcon({super.key, required this.mdw, required this.mdh});
@@ -18,8 +19,8 @@ class TemperatureAndIcon extends StatelessWidget{
             child: Container(
               child: Column(
                 children: [
-                 Obx(()=> Text("${home.temp.ceil()}°C",style: TextStyle(fontSize: mdw*0.14,color: CupertinoColors.white,fontFamily: "apple"),),),
-                  Obx(()=>Text("Feels like ${home.feels_like.ceil()}°C",style: TextStyle(fontSize: mdw*0.045,color: CupertinoColors.white,fontFamily: "apple"),))
+                 Obx(()=> Text("${home.temp.ceil()}°C",style: Temperature_Title(mdw),),),
+                  Obx(()=>Text("Feels like ${home.feels_like.ceil()}°C",style: Temperature_SubTitle(mdw),))
                 ],
               ),
             ),
