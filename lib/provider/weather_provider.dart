@@ -8,17 +8,12 @@ class WeatherProvider extends GetxController {
   RxDouble lat = 0.0.obs;
   RxDouble lon = 0.0.obs;
   RxDouble temp = 0.0.obs;
+  RxDouble wind=0.0.obs;
+  RxInt humidity=0.obs;
   RxDouble feels_like = 0.0.obs;
   RxString weather_status = "".obs;
   TextEditingController ctr=TextEditingController();
   Rx<Color> co = CupertinoColors.systemTeal.obs;
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   getDatas();
-  // }
-
   Future<void> getDatas() async {
     var url = Uri.parse(
         "https://api.weatherapi.com/v1/current.json?key=5dd7454dfb714e629dd23458240710&q=${ctr.text}&aqi=no");
@@ -30,6 +25,8 @@ class WeatherProvider extends GetxController {
       lat.value = dat['location']['lat'];
       lon.value = dat['location']['lon'];
       temp.value = dat['current']['temp_c'];
+      wind.value=dat['current']['wind_kph'];
+      humidity.value=dat['current']['humidity'];
       feels_like.value = dat['current']['feelslike_c'];
       var tmp = dat['current']['condition']['text'];
       switch (tmp) {

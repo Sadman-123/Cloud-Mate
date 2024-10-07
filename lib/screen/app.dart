@@ -53,9 +53,68 @@ class App extends StatelessWidget {
                       weather.getDatas();
                     },
                   ),
-                  SizedBox(height: mdh * 0.045),
                   LocationCard(mdw: mdw, mdh: mdh),
                   TemperatureAndIcon(mdw: mdw, mdh: mdh),
+                  SizedBox(height: mdh * 0.04),
+                  Obx((){
+                    return Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            child: Stack(
+                              children: [
+                                Card(
+                                  child: Container(
+                                    width: mdw*0.45,
+                                    height: mdh*0.25,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("${weather.wind} km/h",style: TextStyle(fontSize: mdw*0.07,fontWeight: FontWeight.bold),),
+                                        Text("Wind Speed",style: TextStyle(fontSize: mdw*0.04),)
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: -35,
+                                  left: 55,
+                                  child: Image.asset("assets/wind.png",width: mdw*0.23,),
+                                )
+                              ],
+                              clipBehavior: Clip.none,
+                            ),
+                          ),
+                          Container(
+                            child: Stack(
+                              children: [
+                                Card(
+                                  child: Container(
+                                    width: mdw*0.45,
+                                    height: mdh*0.25,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Obx(()=>Text("${weather.humidity.value}%",style: TextStyle(fontSize: mdw*0.07,fontWeight: FontWeight.bold),),),
+                                        Text("humidity",style: TextStyle(fontSize: mdw*0.04),)
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: -35,
+                                  left: 55,
+                                  child: Image.asset("assets/humidity.png",width: mdw*0.23,),
+                                )
+                              ],
+                              clipBehavior: Clip.none,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  })
                 ],
               ),
             ),
