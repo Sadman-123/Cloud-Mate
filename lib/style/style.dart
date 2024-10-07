@@ -4,7 +4,7 @@ BoxDecoration Linear_BG_Decoration()
 {
   return BoxDecoration(
     gradient: LinearGradient(
-      colors: [Colors.blueAccent.shade700, Colors.blue.shade300],
+      colors: [Colors.indigo.shade700, Colors.lightBlue.shade200],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
     ),
@@ -21,7 +21,7 @@ TextStyle Input_TextHolder(double mdw)
 {
   return TextStyle(
     fontSize: mdw*0.045,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     fontFamily: "apple",
       color: CupertinoColors.secondaryLabel);
 }

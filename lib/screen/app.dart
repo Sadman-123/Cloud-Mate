@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     var mdw = MediaQuery.sizeOf(context).width;
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        backgroundColor: Colors.blueAccent.shade700,
+        backgroundColor: Colors.indigo.shade700,
       ),
       child: Container(
         height: double.infinity,
