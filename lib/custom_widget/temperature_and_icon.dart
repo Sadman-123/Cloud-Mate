@@ -18,8 +18,8 @@ class TemperatureAndIcon extends StatelessWidget{
             child: Container(
               child: Column(
                 children: [
-                 Obx(()=> Text("${home.temp.ceil()}°C",style: TextStyle(fontSize: mdw*0.14,color: CupertinoColors.white),),),
-                  Obx(()=>Text("Feels like ${home.feels_like.ceil()}°C",style: TextStyle(fontSize: mdw*0.045,color: CupertinoColors.white),))
+                 Obx(()=> Text("${home.temp.ceil()}°C",style: TextStyle(fontSize: mdw*0.14,color: CupertinoColors.white,fontFamily: "apple"),),),
+                  Obx(()=>Text("Feels like ${home.feels_like.ceil()}°C",style: TextStyle(fontSize: mdw*0.045,color: CupertinoColors.white,fontFamily: "apple"),))
                 ],
               ),
             ),

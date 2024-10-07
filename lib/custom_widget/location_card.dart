@@ -14,16 +14,17 @@ class LocationCard extends StatelessWidget{
         children: [
          Obx(()=> Text(home.loc.isEmpty?"Location":"${home.loc}",style: TextStyle(
              fontSize: mdw*0.12,
-             overflow: TextOverflow.ellipsis
+             overflow: TextOverflow.ellipsis,
+             fontFamily: "apple"
              ,color: CupertinoColors.white
          ),),),
           SizedBox(height: mdh*0.002,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(CupertinoIcons.location_solid,color: CupertinoColors.white,),
+              Icon(CupertinoIcons.location_fill,color: CupertinoColors.white,),
               SizedBox(width: mdw*0.01,),
-              Obx(()=>Text("${home.lat},${home.lon}",overflow: TextOverflow.ellipsis,style: TextStyle(color: CupertinoColors.white),))
+              Obx(()=>Text("${home.lat},${home.lon}",overflow: TextOverflow.ellipsis,style: TextStyle(color: CupertinoColors.white,fontFamily: "apple"),))
             ],
           )
         ],
