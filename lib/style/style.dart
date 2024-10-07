@@ -17,9 +17,12 @@ BoxDecoration Input_decor()
       color: CupertinoColors.white
   );
 }
-TextStyle Input_TextHolder()
+TextStyle Input_TextHolder(double mdw)
 {
   return TextStyle(
+    fontSize: mdw*0.045,
+    fontWeight: FontWeight.bold,
+    fontFamily: "apple",
       color: CupertinoColors.secondaryLabel);
 }
 Padding Prefix_Icon()

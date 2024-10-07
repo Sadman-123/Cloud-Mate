@@ -30,7 +30,7 @@ class App extends StatelessWidget {
                       controller: weather.ctr,
                       placeholder: "Enter City",
                       decoration: Input_decor(),
-                      placeholderStyle: Input_TextHolder(),
+                      placeholderStyle: Input_TextHolder(mdw),
                       prefix: Prefix_Icon(),
                       padding: EdgeInsets.all(18),
                     ),
