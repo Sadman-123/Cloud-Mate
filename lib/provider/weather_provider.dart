@@ -1,19 +1,17 @@
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-
-class WeatherProvider extends GetxController {
-  RxString loc = "".obs;
-  RxDouble lat = 0.0.obs;
-  RxDouble lon = 0.0.obs;
-  RxDouble temp = 0.0.obs;
-  RxDouble wind=0.0.obs;
-  RxInt humidity=0.obs;
-  RxDouble feels_like = 0.0.obs;
-  RxString weather_status = "".obs;
+class WeatherProvider extends ChangeNotifier {
+  String loc = "";
+  double lat = 0.0;
+  double lon = 0.0;
+  double temp = 0.0;
+  double wind=0.0;
+  int humidity=0;
+  double feels_like = 0.0;
+  String weather_status = "";
   TextEditingController ctr=TextEditingController();
-  Rx<Color> co = CupertinoColors.systemTeal.obs;
+  Color co = CupertinoColors.systemTeal;
   Future<void> getDatas() async {
     var url = Uri.parse(
         "https://api.weatherapi.com/v1/current.json?key=5dd7454dfb714e629dd23458240710&q=${ctr.text}&aqi=no");
@@ -21,59 +19,59 @@ class WeatherProvider extends GetxController {
 
     if (res.statusCode == 200) {
       var dat = jsonDecode(res.body);
-      loc.value = dat['location']['name'];
-      lat.value = dat['location']['lat'];
-      lon.value = dat['location']['lon'];
-      temp.value = dat['current']['temp_c'];
-      wind.value=dat['current']['wind_kph'];
-      humidity.value=dat['current']['humidity'];
-      feels_like.value = dat['current']['feelslike_c'];
+      loc = dat['location']['name'];
+      lat = dat['location']['lat'];
+      lon = dat['location']['lon'];
+      temp = dat['current']['temp_c'];
+      wind=dat['current']['wind_kph'];
+      humidity=dat['current']['humidity'];
+      feels_like = dat['current']['feelslike_c'];
       var tmp = dat['current']['condition']['text'];
       switch (tmp) {
         case "Mist":
-          weather_status.value = "assets/mist.png";
-          co.value = CupertinoColors.lightBackgroundGray;
+          weather_status = "assets/mist.png";
+          co = CupertinoColors.lightBackgroundGray;
           break;
         case "Sunny":
-          weather_status.value = "assets/hot.png";
-          co.value = CupertinoColors.activeOrange;
+          weather_status = "assets/hot.png";
+          co = CupertinoColors.activeOrange;
           break;
         case "Partly Cloudy":
-          weather_status.value = "assets/cloud.png";
-          co.value = CupertinoColors.systemYellow;
+          weather_status = "assets/cloud.png";
+          co = CupertinoColors.systemYellow;
           break;
         case "Cloudy":
         case "Overcast":
-        weather_status.value = "assets/cloud.png";
-          co.value = CupertinoColors.systemGrey;
+          co = CupertinoColors.systemGrey;
           break;
         case "Light rain shower":
         case "Patchy rain possible":
         case "Moderate rain":
         case "Heavy rain":
-        weather_status.value = "assets/rain.png";
-          co.value = CupertinoColors.systemBlue;
+        weather_status = "assets/rain.png";
+          co = CupertinoColors.systemBlue;
           break;
         case "Thunderstorm":
-          weather_status.value = "assets/lightning.png";
-          co.value = CupertinoColors.systemPurple;
+          weather_status = "assets/lightning.png";
+          co = CupertinoColors.systemPurple;
           break;
         case "Fog":
         case "Freezing fog":
-        weather_status.value = "assets/fog.png";
-          co.value = CupertinoColors.inactiveGray;
+        weather_status = "assets/fog.png";
+          co = CupertinoColors.inactiveGray;
           break;
         case "Snow":
         case "Light snow":
         case "Heavy snow":
         case "Patchy snow possible":
-        weather_status.value = "assets/snow.png";
-          co.value = CupertinoColors.white;
+        weather_status = "assets/snow.png";
+          co = CupertinoColors.white;
           break;
         default:
-          co.value = CupertinoColors.systemTeal;
+          co = CupertinoColors.systemTeal;
           break;
       }
       ctr.clear();
+      notifyListeners();
     }
 }}
